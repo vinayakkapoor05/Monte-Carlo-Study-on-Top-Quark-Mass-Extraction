@@ -1,23 +1,30 @@
-# Monte Carlo Study of Top Quark Mass Extraction
+## Monte Carlo Study of Top Quark Mass Extraction
 
-This project investigates the impact of event selection on top-quark mass extraction in proton-proton collisions at a center-of-mass energy of 100 TeV, focusing on the dileptonic \(\text{t}\bar{\text{t}}\) decay channel. The study employs Monte Carlo simulations to analyze event generation, selection, and mass extraction in preparation for future high-energy hadron colliders like the FCC-hh.
+This project investigates the impact of event selection on top-quark mass extraction in proton-proton collisions at a center-of-mass energy of 100 TeV, focusing on the dileptonic \( t\bar{t} \) decay channel. The study employs Monte Carlo simulations (using **MadGraph5**, **Pythia8**, and **Delphes**) to analyze event generation, selection, and mass extraction, contributing to physics projections for future high-energy hadron colliders like the FCC-hh.
 
 ## Project Overview
 
 ### Research Paper
-The accompanying research paper, titled "Monte Carlo Study of the Impact of Event Selection on Top-Quark Mass Extraction in the Dileptonic \(\text{t}\bar{\text{t}}\) Decay Channel at \( \sqrt{s} = 100 \) TeV," explores how event selection affects the precision of top-quark mass measurements. The study examines the behavior of top-quark production at high-energy scales and aims to evaluate whether event selection introduces significant biases in mass extraction.
+The accompanying research paper, **"Monte Carlo Study of the Impact of Event Selection on Top-Quark Mass Extraction in the Dileptonic \( t\bar{t} \) Decay Channel at \( \sqrt{s} = 100 \) TeV,"** explores how event selection affects the precision of top-quark mass measurements. The study aims to determine whether selection criteria introduce biases in mass extraction.
 
 ### Project Components
-- **Event Generation**: Simulated \(\text{t}\bar{\text{t}}\) production events were generated using Monte Carlo event generators (MadGraph5 and Pythia8), with a focus on dileptonic decays.
-- **Event Selection**: Physics-based selection cuts were applied, including criteria on lepton and jet \(p_T\) and isolation, to isolate signal events from background noise. The event selection aimed to optimize the purity of the signal while maintaining sufficient event statistics.
-- **Top-Quark Mass Extraction**: The top-quark mass was extracted from the simulated events using a relativistic Breit-Wigner distribution. Curve-fitting techniques were applied to measure the top-quark mass before and after event selection to assess the impact of selection criteria.
+- **Event Generation**: Simulated \( t\bar{t} \) production events were generated using **MadGraph5** (for matrix element calculations) and **Pythia8** (for parton showering and hadronization).
+- **Event Selection**: Events were selected based on physics-motivated criteria:
+  - Two oppositely charged leptons (\( e^+e^-, \mu^+\mu^-, e^\pm \mu^\mp \)).
+  - Leptons with **\( p_T > 20 \) GeV** and **\( |\eta| < 2.5 \)**.
+  - Jets with **\( p_T > 20 \) GeV** and **\( |\eta| < 2.5 \)**.
+  - **Two b-tagged jets** to reduce backgrounds.
+  - A **Z+jets veto**: Events with dilepton invariant mass between **76 and 106 GeV** were removed.
+- **Top-Quark Mass Extraction**: The **relativistic Breit-Wigner function** was fit to the observed mass distributions of the top quark before and after event selection.
 
 ### Results
-The analysis showed that the top-quark mass extracted before and after event selection remained consistent within uncertainties, indicating that event selection does not significantly impact the mass measurement at high-energy scales. 
+- The extracted top-quark mass **without event selection**: \( 252.48 \pm 86.00 \) GeV.
+- The extracted top-quark mass **after event selection**: \( 281.24 \pm 103.10 \) GeV.
+- **Conclusion**: Within uncertainties, the event selection **did not significantly alter the extracted top-quark mass**, indicating that selection effects may not be a major source of bias in high-energy mass measurements.
 
 ## Code
 
-This repository includes Python scripts to:
-- Generate Monte Carlo events using external event generators.
-- Apply event selection criteria.
-- Fit the top-quark mass distribution using a relativistic Breit-Wigner function.
+This repository includes Python scripts for:
+- Generating Monte Carlo events using **MadGraph5** and **Pythia8**.
+- Applying event selection cuts on **lepton, jet, and b-jet properties**.
+- Extracting the top-quark mass using **curve fitting with a relativistic Breit-Wigner function (SciPy's `curve_fit`)**.
