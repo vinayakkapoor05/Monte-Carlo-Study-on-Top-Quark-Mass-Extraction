@@ -25,6 +25,5 @@ The accompanying research paper, **"Monte Carlo Study of the Impact of Event Sel
 ## Code
 
 This repository includes Python scripts for:
-- Generating Monte Carlo events using **MadGraph5** and **Pythia8**.
 - Applying event selection cuts on **lepton, jet, and b-jet properties**.
 - Extracting the top-quark mass using **curve fitting with a relativistic Breit-Wigner function (SciPy's `curve_fit`)**.
